@@ -10,7 +10,7 @@ export function useMovies(query, callback) {
   callback?.(); //If a function exists by the user execute it
 
   useEffect(() => {
-    const controller = new AbortController();
+    const controller = new AbortController(); //Use browser API to abort fetch request at cleanup
 
     async function fetchMovies() {
       try {
@@ -18,7 +18,7 @@ export function useMovies(query, callback) {
         setError("");
         const res = await fetch(
           `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
-          { signal: controller.signal }
+          { signal: controller.signal } //connect fetch with browser API
         );
 
         if (!res.ok)
@@ -31,11 +31,12 @@ export function useMovies(query, callback) {
         if (data.Response === "False") throw new Error("No movie found");
         setMovies(data.Search);
       } catch (err) {
-        if (err.name !== "AbortError") setError(err.message); //Ignore error message
+        if (err.name !== "AbortError") setError(err.message); //Ignore error message from AbortController
       } finally {
         setIsLoading(false);
       }
     }
+    //Clean states when input is empty
     if (!query.length) {
       setMovies([]);
       setError("");
@@ -44,7 +45,7 @@ export function useMovies(query, callback) {
     fetchMovies();
 
     return function () {
-      controller.abort();
+      controller.abort(); //abort previous search request after new key stroke
     };
   }, [query]);
 

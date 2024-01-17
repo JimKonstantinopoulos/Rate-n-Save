@@ -115,17 +115,6 @@ function Main({ children }) {
 //-------------------------------------------------- Movies ---------------------------------------------------
 
 function Box({ children }) {
-  // const [isOpen, setIsOpen] = useState(true);
-
-  // return (
-  //   <div className="box">
-  //     <button className="btn-toggle" onClick={() => setIsOpen((open) => !open)}>
-  //       {isOpen ? "–" : "+"}
-  //     </button>
-  //     {isOpen && children}
-  //   </div>
-  // );
-
   return <div className="box">{children}</div>;
 }
 
@@ -281,7 +270,14 @@ function SelectedMovie({
                   )}
                 </>
               ) : (
-                <p>You have already rated this movie with {userRating}</p>
+                <p>
+                  You have already rated this movie with{" "}
+                  {
+                    watched.find((movie) => movie.imdbID === selectedMovieId)
+                      .userRating
+                  }
+                  <span>🌟</span>
+                </p>
               )}
             </div>
             <p>
