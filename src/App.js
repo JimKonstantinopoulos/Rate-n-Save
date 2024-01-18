@@ -265,7 +265,7 @@ function SelectedMovie({
                   <StarRating maxRating={10} onSetRating={setUserRating} />
                   {userRating > 0 && (
                     <button className="btn-add" onClick={handleAdd}>
-                      + Add to watched
+                      + Add to wa
                     </button>
                   )}
                 </>
