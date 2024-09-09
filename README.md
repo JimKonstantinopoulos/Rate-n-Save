@@ -1,3 +1,6 @@
+# Rate-n-Save
+Search the movie you wish from a user friendly, authentication free UI, using a simple API, as well as rate and save them to keep track on them every time.
+
 # Languages
 <ol>
   <li>HTML5</li>
