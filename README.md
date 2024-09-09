@@ -20,11 +20,6 @@ Search the movie you wish from a user friendly, authentication free UI, using a 
   <li>create-react-app</li>
 </ol>
 
-# Deployment
-<ol>
-  <li>Railway</li>
-</ol>
-
 # How to use
 1. **Clone the repository**
     ```
